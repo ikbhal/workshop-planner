@@ -1,0 +1,29 @@
+{
+	"name" : "workshop-planner",
+	"version" : "0.1.1",
+	"description" : "Automatic workhop planner, arranging meeting learner with expert or fellow members",
+	"main" : "index.js",
+	"scripts" : {
+		"start" : "node index.js"
+	},
+	"dependencies" : {
+		"express" : "~4.9.x"
+	},
+	"engines" : {
+		"node" : "0.10.x"
+	},
+	"repository": {
+		"type" : "git",
+		"url":"https://github.com/ikbhal/workshop-planner"
+	},
+	"keywords": [
+		"node",
+		"heroku",
+		"express",
+		"workshop",
+		"meetup",
+		"learner meet expers",
+		"meet fellow learners"
+	],
+	"license": "MIT"
+}
