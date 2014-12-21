@@ -1,0 +1,7 @@
+{
+	"name" : "Workshop Planner",
+	"description": "Workshop planner plans workhop by connecting learner and experts.",
+	"repository": "https://github.com/ikbhal/workshop-planner",
+	"logo": "https://node-js-sample.herokuapp.com/node.svg",
+	"keywords": ["workshop", "planner", "node", "express", "static"]
+}
