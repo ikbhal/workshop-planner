@@ -89,6 +89,7 @@ app.get('/auth/facebook/callback',
 		res.redirect('/account');
 	});
 
+/*
 app.get('/auth/callback', 
 	passport.authenticate('facebook', {
 		failureRedirect: '/'
@@ -96,7 +97,7 @@ app.get('/auth/callback',
 	function(req, res){
 		res.redirect('/account');
 	});
-
+*/
 app.get('/logout', function(req, res){
 	req.logout();
 	res.redirect('/');
