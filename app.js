@@ -40,6 +40,7 @@ passport.use(new FacebookStrategy({
 		callbackURL: config.facebook.callbackURL
 	},
 	function(accessToken, refreshToken, profile, done){
+		/*
 		User.findOrCreate({oauthID: profile.id}
 			, { name: profile.displayName, created: Date.now()})
 		.success(function(user){
@@ -48,10 +49,11 @@ passport.use(new FacebookStrategy({
 		.error(function(err){
 			done(err);
 		});
+		*/
 		/*process.nextTick(function(){
 			return done(null, profile);
 		});*/
-		/*
+		
 		User.findOne({oauthID: profile.id}, function(err,user){
 			if(err) { console.log(err); done(err, null);};
 			if(!err && user != null ){
@@ -74,7 +76,7 @@ passport.use(new FacebookStrategy({
 				});
 			}
 		});
-*/
+
 	} 
 ));
 
