@@ -90,8 +90,14 @@ app.use(errorHandler({dumpExceptions:true, showStack:true}));
 
 // mongo config
 var MONGOLAB_URI= "mongodb://ikbhal:Think1Allah!@ds029051.mongolab.com:29051/workshop-planner";
-var mongo = process.env.MONGOLAB_URI || 'mongodb://localhost/node-bootstrap3-template'
-mongoose.connect(mongo);
+var mongo = process.env.MONGOLAB_URI || 'mongodb://localhost/workshop-planner'
+mongoose.connect(mongo, function(err){
+	if(err){
+		console.log("Unable to connec to mongo due to err: " + err);
+	} else {
+		console.log('Connect to mongo successfully');
+	}
+});
 
 var User = mongoose.model('User', 	{
 	oauthID: Number,
