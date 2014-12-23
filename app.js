@@ -1,8 +1,12 @@
+var http = require('http');
+//var path = require('path');
+//var fs = require('fs');
 var config = require('./oauth.js');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var express = require('express');
+var routes = require('./routes');
 
 // serialize and deserialize
 passport.serializeUser(function(user, done){
@@ -38,9 +42,16 @@ app.configure(function(){
 	app.use(passport.initialize());
 	app.use(passport.session());
 	app.use(app.router);
-	//app.set('port', (process.env.PORT || 80));
-	app.use(express.static(__dirname + '/public'));
+	app.set('port', (process.env.PORT || 80));
+	app.use(express.static(path.join(__dirname , 'public'));
+  app.use(express.errorHandler({dumpExceptions:true, showStack:true}));
 });
+
+// mongo config
+//var MONGOLAB_URI= "add_your_mongolab_uri_here"
+//var mongo = process.env.MONGOLAB_URI || 'mongodb://localhost/node-bootstrap3-template'
+//mongoose.connect(mongo);
+
 
 // routes
 app.get('/', routes.index);
