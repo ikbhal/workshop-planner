@@ -1,29 +1,34 @@
 {
-	"name" : "workshop-planner",
-	"version" : "0.1.1",
-	"description" : "Automatic workhop planner, arranging meeting learner with expert or fellow members",
-	"main" : "index.js",
-	"scripts" : {
-		"start" : "node index.js"
-	},
-	"dependencies" : {
-		"express" : "~4.9.x"
-	},
-	"engines" : {
-		"node" : "0.10.x"
-	},
-	"repository": {
-		"type" : "git",
-		"url":"https://github.com/ikbhal/workshop-planner"
-	},
-	"keywords": [
-		"node",
-		"heroku",
-		"express",
-		"workshop",
-		"meetup",
-		"learner meet expers",
-		"meet fellow learners"
-	],
-	"license": "MIT"
+  "name": "workshop-planner",
+  "version": "0.1.1",
+  "description": "Automatic workhop planner, arranging meeting learner with expert or fellow members",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "~4.9.x",
+    "jade": "^1.8.2",
+    "mongodb": "^1.4.26",
+    "mongoose": "^3.8.21",
+    "passport": "^0.2.1",
+    "passport-facebook": "^1.0.3"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ikbhal/workshop-planner"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express",
+    "workshop",
+    "meetup",
+    "learner meet expers",
+    "meet fellow learners"
+  ],
+  "license": "MIT"
 }
