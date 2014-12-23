@@ -130,7 +130,7 @@ app.get('/account', ensureAuthenticated, function(req, res){
 		if(err) {
 			console.log(err);
 		} else {
-			res.sender('account', {user: user});
+			res.send('account', {user: user});
 		}
 	});
 });
