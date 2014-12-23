@@ -81,7 +81,15 @@ app.get('/auth/facebook',
 	passport.authenticate('facebook'),
 	function(req, res){});
 
-app.get('auth/facebook/callback', 
+app.get('/auth/facebook/callback', 
+	passport.authenticate('facebook', {
+		failureRedirect: '/'
+	}), 
+	function(req, res){
+		res.redirect('/account');
+	});
+
+app.get('/auth/callback', 
 	passport.authenticate('facebook', {
 		failureRedirect: '/'
 	}), 
