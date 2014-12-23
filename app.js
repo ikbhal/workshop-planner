@@ -100,8 +100,11 @@ app.use(express.static(path.join(__dirname , 'public')));
 app.use(errorHandler({dumpExceptions:true, showStack:true}));
 
 // mongo config
-var MONGOLAB_URI= "mongodb://ikbhal:Think1Allah!@ds029051.mongolab.com:29051/workshop-planner";
-var mongo = process.env.MONGOLAB_URI || 'mongodb://localhost/workshop-planner'
+//var MONGOLAB_URI= "mongodb://ikbhal:Think1Allah!@ds029051.mongolab.com:29051/workshop-planner";
+//var mongo = process.env.MONGOLAB_URI || 'mongodb://localhost/workshop-planner'
+var MONGO_URI = 'mongodb://localhost/workshop-planner';
+var mongo = MONGO_URI;
+
 mongoose.connect(mongo, function(err){
 	if(err){
 		console.log("Unable to connec to mongo due to err: " + err);
