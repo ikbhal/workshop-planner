@@ -43,7 +43,7 @@ app.configure(function(){
 	app.use(passport.session());
 	app.use(app.router);
 	app.set('port', (process.env.PORT || 80));
-	app.use(express.static(path.join(__dirname , 'public'));
+	app.use(express.static(path.join(__dirname , 'public')));
   app.use(express.errorHandler({dumpExceptions:true, showStack:true}));
 });
 
