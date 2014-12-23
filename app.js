@@ -19,11 +19,18 @@ var routes = require('./routes');
 
 // serialize and deserialize
 passport.serializeUser(function(user, done){
-	done(null, user);
+	//done(null, user);
+	console.log('serializeUser: ' + user._id);
+	done(null, user._id);
 });
 
-passport.deserializeUser(function(obj, done){
-	done(null, obj);
+passport.deserializeUser(function(id, done){
+	//done(null, obj);
+	User.findById(id, function(err, user){
+		console.log(user);
+		if(!err) done(null, user);
+		else done(err, null);
+	});
 });
 
 // config
@@ -33,8 +40,29 @@ passport.use(new FacebookStrategy({
 		callbackURL: config.facebook.callbackURL
 	},
 	function(accessToken, refreshToken, profile, done){
-		process.nextTick(function(){
+		/*process.nextTick(function(){
 			return done(null, profile);
+		});*/
+		User.findOne({oauthID: profile.id}, function(err,user){
+			if(err) { console.log(err);};
+			if(!err && user != null ){
+				done(nul, user);
+			} else {
+				var user = new User({
+					oauthID: profile.id,
+					name: profile.displayName,
+					created: Date.now()
+				});
+
+				user.save(function(err, user){
+					if(err){
+						console.log(err);
+					}else{
+						console.log('Saving user ...');
+						done(null, user);
+					}
+				});
+			}
 		});
 	} 
 ));
@@ -61,16 +89,28 @@ app.use(express.static(path.join(__dirname , 'public')));
 app.use(errorHandler({dumpExceptions:true, showStack:true}));
 
 // mongo config
-//var MONGOLAB_URI= "add_your_mongolab_uri_here"
-//var mongo = process.env.MONGOLAB_URI || 'mongodb://localhost/node-bootstrap3-template'
-//mongoose.connect(mongo);
+var MONGOLAB_URI= "mongodb://ikbhal:Think1Allah!@ds029051.mongolab.com:29051/workshop-planner";
+var mongo = process.env.MONGOLAB_URI || 'mongodb://localhost/node-bootstrap3-template'
+mongoose.connect(mongo);
 
+var User = mongoose.model('User', 	{
+	oauthID: Number,
+	name: String,
+	created: Date
+});
 
 // routes
 app.get('/', routes.index);
 app.get('/ping', routes.ping);
 app.get('/account', ensureAuthenticated, function(req, res){
-	res.render('account', {user: req.user});
+	//res.render('account', {user: req.user});
+	User.findById(req.session.passport.user, function(err, user){
+		if(err) {
+			console.log(err);
+		} else {
+			res.sender('account', {user: user});
+		}
+	});
 });
 
 app.get('/', function(req, res){
