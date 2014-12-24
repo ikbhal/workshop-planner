@@ -57,7 +57,7 @@ passport.use(new FacebookStrategy({
 		User.findOne({oauthID: profile.id}, function(err,user){
 			if(err) { console.log(err); done(err, null);};
 			if(!err && user != null ){
-				done(nul, user);
+				done(null, user);
 			} else {
 				var user = new User({
 					oauthID: profile.id,
